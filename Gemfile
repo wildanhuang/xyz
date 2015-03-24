@@ -1,11 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.19'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
+ruby '2.1.0'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.1.0'
+# Use sqlite3 as the database for Active Record
+gem 'mysql2'
+# Devise 
+gem 'devise'
+gem 'byebug'
 
 # Use unicorn as the web server
 # gem 'unicorn'
