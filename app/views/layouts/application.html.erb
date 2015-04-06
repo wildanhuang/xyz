@@ -17,42 +17,56 @@
           <a class="navbar-brand">Sistem Inventory PT XYZ</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">        
+          <% if current_user %>
+          <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-              <i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+              <i class="glyphicon glyphicon-user"></i>Welcome, <%= (current_user.first_name.present? ? current_user.first_name : "Admin") rescue "Admin" %> <span class="caret"></span></a>
               <ul id="g-account-menu" class="dropdown-menu" role="menu">
                 <li><a href="#">My Profile</a></li>
-                <li><a href="login.html"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                <li>
+                  <a href="<%= destroy_user_session_path %>"><i class="glyphicon glyphicon-lock"></i> Logout</a>
+                </li>
               </ul>
             </li>
+            <li class="dropdown">
+              <%= link_to "<i class='glyphicon glyphicon-lock'></i> Logout".html_safe, destroy_user_session_path %>
+            </li>
           </ul>
+          <% end %>
         </div>
       </div><!-- /container -->
     </div>
-
-    <div class="page-header" style="position:absolute;left : 250px">
-      <%= image_tag "logo1.jpg", :style => "width: 600px; height:150px" %>
-      <div class="clearfix"></div>
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="home.html">Home</a></li>
-        <li role="presentation"><a href="produk.html">Produk</a></li>
-        <li role="presentation"><a href="bahan_baku.html">Bahan Baku</a></li>
-        <li role="presentation"><a href="#">Penjualan</a></li>
-        <li role="presentation"><a href="#">Data Customer dan Supplier</a></li>
-        <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-          Laporan <span class="caret"></span>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Laporan Penjualan</a></li>
-            <li><a href="#">Laporan Stock Bahan Baku</a></li>
-          </ul>
-        </li>         
-      </ul>
-
-
-        <%= yield %>
-    </div>
+    
+    <%= render 'layouts/messages' %>
+    <% unless params[:controller] == "devise/sessions" && params[:action] == "new" %>
+      <div class="page-header" style="position:absolute;left : 250px">
+        <%= image_tag "logo1.jpg", :style => "width: 600px; height:150px" %>
+        <div class="clearfix"></div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="<%= link_helper('homes', params[:controller]) %>">
+            <%= link_to "Home", root_url %>
+          </li>
+          <li role="presentation" class="<%= link_helper('products', params[:controller]) %>">
+            <%= link_to "Product", products_path %>
+          </li>
+          <li role="presentation" class="<%= link_helper('resources', params[:controller]) %>"><a href="bahan_baku.html">Bahan Baku</a></li>
+          <li role="presentation" class="<%= link_helper('sales', params[:controller]) %>"><a href="#">Penjualan</a></li>
+          <li role="presentation" class="<%= link_helper('customers', params[:controller]) %>"><a href="#">Data Customer dan Supplier</a></li>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+            Laporan <span class="caret"></span>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Laporan Penjualan</a></li>
+              <li><a href="#">Laporan Stock Bahan Baku</a></li>
+            </ul>
+          </li>         
+        </ul>
+          <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
 
 </body>
 </html>

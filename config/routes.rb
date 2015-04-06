@@ -1,4 +1,5 @@
 Xyz::Application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -14,6 +15,7 @@ Xyz::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :homes
+  resources :products
 
   # Sample resource route with options:
   #   resources :products do
