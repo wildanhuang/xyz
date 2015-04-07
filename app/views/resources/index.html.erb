@@ -1,27 +1,17 @@
-<%= form_for @product, :url => products_path, :html => {:class => "form-horizontal col-sm-12 col-sm-offset-1"} do |f| %>
+<%= form_for @resource, :url => resources_path, :html => {:class => "form-horizontal col-sm-12 col-sm-offset-1"} do |f| %>
 <br><br>
   <div class="form-group">
-    <label for="product_name" class="col-sm-3 control-label">Product Name</label>
+    <label for="resource_name" class="col-sm-3 control-label">Resource Name</label>
     <div class="col-sm-7">
-      <%= f.text_field :name, :placeholder => "Enter Product Name", :class => "form-control" %>
+      <%= f.text_field :name, :placeholder => "Enter resource Name", :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <label for="quantity" class="col-sm-3 control-label">Quantity</label>
     <div class="col-sm-7">
-      <%= f.text_field :quantity, :placeholder => "Enter Product Quantity per KG", :class => "form-control" %>
+      <%= f.text_field :quantity, :placeholder => "Enter resource Quantity per KG", :class => "form-control" %>
     </div>
   </div>
-  <div class="form-group">
-    <label for="price" class="col-sm-3 control-label">Price</label>
-      <div class="col-sm-7">
-        <div class="input-group">
-          <div class="input-group-addon">Rp</div>
-            <%= f.text_field :price, :placeholder => "Amount", :class => "form-control" %>
-          <div class="input-group-addon">.00</div>
-        </div>
-      </div>
-  </div>     
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-12">
       <%= f.submit 'Add', :class => "btn btn-default" %>
@@ -65,17 +55,15 @@
         <th>ID</th>
         <th>Name</th>
         <th>Quantity</th>
-        <th>Price</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
-      <% @products.each do |product| %>
+      <% @resources.each do |resource| %>
         <tr>
-          <td><%= product.id %></td>
-          <td><%= product.name %></td>
-          <td><%= product.quantity %></td>
-          <td><%= product.price %></td>
+          <td><%= resource.id %></td>
+          <td><%= resource.name %></td>
+          <td><%= resource.quantity %></td>
           <td><a href="update_produk.html">Update</a> &nbsp <a href="">Delete</a></td>
         </tr>
       <% end %>

@@ -50,7 +50,9 @@
           <li role="presentation" class="<%= link_helper('products', params[:controller]) %>">
             <%= link_to "Product", products_path %>
           </li>
-          <li role="presentation" class="<%= link_helper('resources', params[:controller]) %>"><a href="bahan_baku.html">Bahan Baku</a></li>
+          <li role="presentation" class="<%= link_helper('resources', params[:controller]) %>">
+            <%= link_to "Resource", resources_path %>
+          </li>
           <li role="presentation" class="<%= link_helper('sales', params[:controller]) %>"><a href="#">Penjualan</a></li>
           <li role="presentation" class="<%= link_helper('customers', params[:controller]) %>"><a href="#">Data Customer dan Supplier</a></li>
           <li role="presentation" class="dropdown">
