@@ -2,8 +2,11 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @resource = Resource.new
     @resources = Resource.all
+  end
+
+  def new
+    @resource = Resource.new
   end
 
   def create    
@@ -17,6 +20,20 @@ class ResourcesController < ApplicationController
     redirect_to resources_path, :notice => notice
   end
 
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+
+  def update
+    resource = Resource.find(params[:id])
+
+    if resource.update_attributes(resource_params)
+      notice = "Resource berhasil di update."
+    else
+      notice = "Resource gagal di update. Hubungi administrator."
+    end
+    redirect_to resources_path, :notice => notice
+  end
 
   private
 

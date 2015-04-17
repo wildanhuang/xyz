@@ -37,7 +37,11 @@
           <td><%= product.name %></td>
           <td><%= product.quantity %></td>
           <td><%= product.price %></td>
-          <td><a href="update_produk.html">Update</a> &nbsp <a href="">Delete</a></td>
+          <td>
+            <%= link_to "Update", edit_product_path(product) %>
+            &nbsp
+            <a href="">Delete</a>
+          </td>
         </tr>
       <% end %>
     </tbody>
