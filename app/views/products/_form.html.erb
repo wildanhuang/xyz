@@ -26,6 +26,23 @@
   </div>   
 
   <div class="form-group">
+    <label for="lastname" class="col-sm-2 control-label">Ingredients</label>
+    <div class="row">
+      <div class="col-sm-5">
+        <% @resources.each do |resource| %>
+          <div>
+            <label class="checkbox-inline">
+              <%= check_box_tag "ingredients[#{resource.id}][name]", true, @product.resources.collect{|x|x.id}.include?(resource.id) %> <%= resource.name %>
+            </label>
+            <%= text_field_tag "ingredients[#{resource.id}][rate_percent]", "", :placeholder => "%" %>
+          </div>
+          <div class="clearfix"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-12">
       <%= f.submit 'Save', :class => "btn btn-default" %>
     </div>

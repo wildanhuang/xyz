@@ -7,12 +7,24 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @resources = Resource.all
   end
 
-  def create    
+  def create
     product = Product.new(product_params)
 
     if product.save
+      if params[:ingredients]
+        params[:ingredients].each do |key, data|
+          if data[:name]
+            ingredient = Ingredient.new
+            ingredient.product_id = product.id
+            ingredient.resource_id = key
+            ingredient.rate_percent = data[:rate_percent]
+            ingredient.save
+          end
+        end
+      end
       notice = "Product berhasil di buat."
     else
       notice = "Product gagal di buat. Hubungi administrator."
@@ -22,6 +34,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @resources = Resource.all
   end
 
   def update
