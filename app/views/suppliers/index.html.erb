@@ -1,0 +1,49 @@
+<h1 class="page-header">Supplier</h1>
+
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-10">
+    <%= link_to 'Add <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>'.html_safe, new_supplier_path, :class => "btn btn-default" %>
+    
+    <div class="col-lg-4">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+
+  </div>      
+</div>
+<div class="clearfix"></div>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <caption></caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @suppliers.each do |supplier| %>
+        <tr>
+          <td><%= supplier.id %></td>
+          <td><%= supplier.name %></td>
+          <td><%= supplier.address %></td>
+          <td><%= supplier.phone %></td>
+          <td>
+            <%= link_to "Update", edit_supplier_path(supplier) %>
+            &nbsp
+            <a href="">Delete</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

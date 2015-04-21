@@ -18,6 +18,7 @@ Xyz::Application.routes.draw do
   resources :products
   resources :resources
   resources :customers
+  resources :suppliers
 
   # Sample resource route with options:
   #   resources :products do

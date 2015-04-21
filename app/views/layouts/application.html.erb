@@ -57,13 +57,16 @@
               <li class="<%= link_helper('sales', params[:controller]) %>">
                 <a href="#">Penjualan</a>
               </li>
-              <li class="<%= link_helper('customers', params[:controller]) %>">
-                <%= link_to "Customer", customers_path %>
-              </li>
             </ul>
             <ul class="nav nav-sidebar">
-              <li><a href="">Master Data</a></li>
-              <li><a href="">Laporan</a></li>        
+              <li class="<%= link_helper('customers', params[:controller]) %> <%= link_helper('suppliers', params[:controller]) %>">
+                <a href="#demo4" data-toggle="collapse" data-parent="#MainMenu">Master Data</a>
+                  <div class="collapse" id="demo4">
+                    <%= link_to "Data Customer", customers_path, :class => "list-group-item" %>
+                    <%= link_to "Data Supplier", suppliers_path, :class => "list-group-item" %>
+                  </div>
+              </li>
+              <li><a href="">Laporan</a></li>         
             </ul>
           </div>
         </div>
