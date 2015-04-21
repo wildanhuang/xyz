@@ -1,0 +1,54 @@
+<%= form_for @sale, :url => url, :html => {:class => "form-horizontal col-sm-12 col-sm-offset-1"} do |f| %>
+<br><br>
+  <div class="form-group">
+    <label for="customer_name" class="col-sm-2 control-label">Date</label>
+    <div class="col-sm-3">
+      <div class='input-group date' id='datetimepicker1'>
+        <%= f.text_field :date, :placeholder => "dd/mm/yy", :class => "form-control" %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="quantity" class="col-sm-2 control-label">Customer</label>
+    <div class="col-sm-3">
+      <%= f.select :customer_id, options_for_select(@customers), :class => "form-control" %>
+    </div>
+  </div> 
+  <div class="form-group">
+    <label for="quantity" class="col-sm-2 control-label">Product</label>
+    <div class="col-sm-3">
+      <%= f.select :product_id, options_for_select(@products), :class => "form-control" %>
+    </div>
+  </div> 
+
+  <div class="form-group">
+    <label for="quantity" class="col-sm-2 control-label">Quantity</label>
+    <div class="col-sm-3">
+      <div class="input-group">
+        <%= f.text_field :quantity, :placeholder => "Quantity", :class => "form-control" %>
+        <div class="input-group-addon">kg</div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <label for="quantity" class="col-sm-2 control-label">Total Price</label>
+    <div class="col-sm-3">
+      <div class="input-group">
+        <div class="input-group-addon">Rp</div>
+        <%= f.text_field :total_price, :placeholder => "Amount", :class => "form-control" %>
+        <div class="input-group-addon">.00</div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-12">
+      <%= f.submit 'Save', :class => "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
